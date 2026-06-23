@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>MK体育 · 持续关注的起点</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f3f7fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      line-height: 1.6;
+      color: #1a2a3a;
+      padding: 24px 16px 48px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 780px;
+      width: 100%;
+    }
+
+    /* 开场卡片 — 故事入口 */
+    .hero-note {
+      background: #ffffff;
+      border-radius: 28px 28px 28px 28px;
+      padding: 32px 24px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(0, 50, 60, 0.06);
+      border-left: 6px solid #2f9e8c;
+    }
+    .hero-note .greeting {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #2f9e8c;
+      margin-bottom: 10px;
+    }
+    .hero-note h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 14px;
+      color: #0f2c34;
+    }
+    .hero-note p {
+      color: #2f4050;
+    }
+
+    /* 承接段落 — 再次回来的理由 */
+    .story-block {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 22px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 16px rgba(0, 40, 50, 0.05);
+    }
+    .story-block h2 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #0f2c34;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .story-block h2 span {
+      background: #2f9e8c;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .story-block p {
+      margin-bottom: 14px;
+      color: #2b3d4b;
+    }
+    .story-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 特点列表 — 网格卡片 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 22px 16px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eaf0f2;
+      transition: border 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      border-color: #b9d4cf;
+      box-shadow: 0 6px 18px rgba(47, 158, 140, 0.08);
+    }
+    .feature-card .icon-badge {
+      display: inline-block;
+      background: #e6f3f0;
+      color: #1e7a6b;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 3px 10px;
+      border-radius: 30px;
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #0f2c34;
+    }
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #3d5362;
+    }
+
+    /* 使用场景 + 温和提示 */
+    .scene-wrapper {
+      background: white;
+      border-radius: 24px;
+      padding: 24px 22px 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 16px rgba(0, 40, 50, 0.05);
+    }
+    .scene-wrapper h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0f2c34;
+      margin-bottom: 16px;
+    }
+    .scene-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+    .scene-item:last-child {
+      margin-bottom: 0;
+    }
+    .scene-num {
+      min-width: 28px;
+      height: 28px;
+      background: #ddebe7;
+      color: #1b6f61;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .scene-text {
+      flex: 1;
+    }
+    .scene-text strong {
+      color: #0f2c34;
+    }
+    .scene-text p {
+      color: #344b59;
+      font-size: 0.95rem;
+      margin-top: 2px;
+    }
+
+    /* 收藏 & 持续关注卡片 */
+    .bookmark-card {
+      background: white;
+      border-radius: 24px;
+      padding: 26px 22px;
+      margin-bottom: 28px;
+      border-top: 4px solid #2f9e8c;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+    }
+    .bookmark-card h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f2c34;
+      margin-bottom: 12px;
+    }
+    .bookmark-card p {
+      color: #2b4050;
+      margin-bottom: 16px;
+    }
+    .bookmark-card .link-sentence {
+      background: #f0f7f5;
+      border-radius: 60px;
+      padding: 12px 20px;
+      display: inline-block;
+      font-size: 1rem;
+    }
+    .bookmark-card .link-sentence a {
+      color: #1a7b6b;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid #b7d9d1;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .bookmark-card .link-sentence a:hover {
+      border-bottom-color: #1a7b6b;
+      color: #0a4d42;
+    }
+
+    /* FAQ 摘要（简洁） */
+    .faq-mini {
+      background: white;
+      border-radius: 24px;
+      padding: 22px 22px 18px;
+      margin-bottom: 28px;
+    }
+    .faq-mini h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0f2c34;
+      margin-bottom: 14px;
+    }
+    .faq-item {
+      margin-bottom: 12px;
+    }
+    .faq-item .q {
+      font-weight: 600;
+      color: #1c3b44;
+      font-size: 0.97rem;
+    }
+    .faq-item .a {
+      color: #3f5766;
+      font-size: 0.92rem;
+      padding-left: 6px;
+      margin-top: 2px;
+    }
+
+    /* 尾注 */
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6b828f;
+      padding-top: 12px;
+      border-top: 1px solid #dce6e9;
+      margin-top: 10px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 580px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .hero-note h1 {
+        font-size: 1.6rem;
+      }
+      .hero-note {
+        padding: 26px 18px 22px;
+      }
+      .story-block, .scene-wrapper, .bookmark-card, .faq-mini {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+    }
+    @media (max-width: 400px) {
+      body {
+        padding: 16px 12px 32px;
+      }
+      .hero-note .greeting {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 开场短句 -->
+  <div class="hero-note">
+    <div class="greeting">⏳ 又一次打开</div>
+    <h1>不只是路过，而是记得回来</h1>
+    <p>你曾经在这里停留过。也许只是扫了一眼，也许认真翻过几页。今天再次打开，是想确认这个地址还在，内容还在更新，熟悉的节奏没有断。</p>
+  </div>
+
+  <!-- 承接段落 -->
+  <div class="story-block">
+    <h2><span>1</span> 把访问变成一种习惯</h2>
+    <p>我们很容易收藏一堆链接，然后再也不打开。但总有一些站点，值得你隔段时间回来看看。<a href="https://indexwap-mksports.com" style="color:#1a7b6b; text-decoration: underline; text-underline-offset: 3px; font-weight: 500;">MK体育</a> 就是这样一个地方——它不张扬，但内容一直在更新，角度也一直保持着自己的节奏。</p>
+    <p>很多人把它放在书签栏的二级文件夹里，偶尔点开，发现又有新的赛事回顾、训练思路或者运动科普。不需要每天盯着，但每次回来都有收获。</p>
+  </div>
+
+  <!-- 特点列表：网格卡片 -->
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="icon-badge">持续</div>
+      <h3>内容沉淀</h3>
+      <p>不是碎片信息，而是有头有尾的整理。从运动解析到行业观察，每一篇都经过筛选和编排。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-badge">节奏</div>
+      <h3>温和更新</h3>
+      <p>没有轰炸式推送，内容按自己的频率发布，你可以在方便的时候安静阅读。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-badge">视角</div>
+      <h3>多面叙事</h3>
+      <p>不止记录比分，更关注背景、策略和人物故事，让体育不止于输赢。</p>
+    </div>
+    <div class="feature-card">
+      <div class="icon-badge">导航</div>
+      <h3>清晰索引</h3>
+      <p>分类和标签让回溯变得简单，想找某个系列或专题，不需要翻很久。</p>
+    </div>
+  </div>
+
+  <!-- 场景 + 温和提示 -->
+  <div class="scene-wrapper">
+    <h2>📌 哪些时候你会想回来</h2>
+    <div class="scene-item">
+      <div class="scene-num">1</div>
+      <div class="scene-text">
+        <strong>赛季间隙</strong>
+        <p>没有比赛的日子里，翻看之前的深度复盘，或者读一读运动文化相关的内容，填补空档。</p>
+      </div>
+    </div>
+    <div class="scene-item">
+      <div class="scene-num">2</div>
+      <div class="scene-text">
+        <strong>想找点不同视角</strong>
+        <p>主流报道看多了，换一个更沉稳、更偏重细节的叙述方式，常常能看到被忽略的亮点。</p>
+      </div>
+    </div>
+    <div class="scene-item">
+      <div class="scene-num">3</div>
+      <div class="scene-text">
+        <strong>单纯想保持连接</strong>
+        <p>不需要理由，就是习惯点开书签里的那个名字，看看有没有新东西。这种不刻意的关注，最舒服。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 收藏 & 链接卡片（嵌入句子） -->
+  <div class="bookmark-card">
+    <h2>🔖 把它放在顺手的地方</h2>
+    <p>如果你觉得这里值得偶尔回来，不妨把网址存进浏览器书签，或者记在笔记应用里。下次再想找点体育相关的内容时，直接打开就好。</p>
+    <div class="link-sentence">
+      无论你是第几次点开，<a href="https://indexwap-mksports.com">MK体育</a> 都保持着同样的调性——认真，但不沉重。
+    </div>
+  </div>
+
+  <!-- FAQ 摘要（简洁，不喧宾夺主） -->
+  <div class="faq-mini">
+    <h3>❓ 你可能想问</h3>
+    <div class="faq-item">
+      <div class="q">内容更新频率怎样？</div>
+      <div class="a">没有固定时间表，但保持稳定节奏。适合不定期回看，而不是每天刷新。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">适合只看热门赛事的人吗？</div>
+      <div class="a">也适合。不过这里的视角更偏梳理和背景，不是简单的结果播报。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">需要注册或登录吗？</div>
+      <div class="a">不需要。直接访问即可阅读全部内容，没有门槛。</div>
+    </div>
+  </div>
+
+  <!-- 温和结尾 -->
+  <div class="footer-note">
+    <p>保持关注，不需要太多理由。一个值得再次打开的地址，就够了。</p>
+  </div>
+
+</div>
+</body>
+</html>
